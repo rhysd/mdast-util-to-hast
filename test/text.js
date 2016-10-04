@@ -23,5 +23,18 @@ test('Nodes', function (t) {
     'should map `text`s'
   );
 
+  t.deepEqual(
+    to(u('text', {data: {
+      hProperties: {
+        className: ['someclass']
+      }
+    }}, 'some text')),
+    u('element', {tagName: 'span', properties: {
+      className: ['someclass']
+    }}, [
+      u('text', 'some text')
+    ])
+  );
+
   t.end();
 });
